@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace DiceRollerLab
 {
-    internal class RollerClass
+    public static class RollerClass
     {
-        public static int Roller()
+        public static Random random = new Random();
+        public static int Roller6()
         { 
-            Random random = new Random();
-            return random.Next();
+            return random.Next(1,7);
+        }
+        public static int Roller(int sides)
+        {
+            return random.Next(1, sides + 1);
         }
 
     }

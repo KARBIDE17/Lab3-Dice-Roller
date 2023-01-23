@@ -1,4 +1,6 @@
 ﻿
+using DiceRollerLab;
+
 bool isValidNum; // establish a boolean that assures the user only inputs an integer
 do
 {
@@ -18,7 +20,7 @@ do
             Console.WriteLine("Uuumm i think youd better do a coin flip instead");
         }
 
-        
+
 
         else if (sides == 6) // if user chooses a 6 sided specifically run this style for crpas scoring
         {
@@ -26,54 +28,55 @@ do
             Console.WriteLine("Press the enter key to give 'em a roll"); // enter to roll
             Console.ReadLine();
 
-            Random rand1 = new Random(); // initiate random number generation
-            int myRandomNumber1 = rand1.Next(1, 7); // establish range of numbers,
-            Console.WriteLine("First die reads: " + myRandomNumber1 + "!"); // display first die value
+            //Random rand1 = new Random(); // initiate random number generation
+            //int myRandomNumber1 = rand1.Next(1, 7); // establish range of numbers,
+            //Console.WriteLine("First die reads: " + myRandomNumber1 + "!"); // display first die value
 
-            Random rand2 = new Random();
-            int myRandomNumber2 = rand2.Next(1, 7);
-            Console.WriteLine("First die reads: " + myRandomNumber2 + "!"); // display second die value
+            int roll1 = RollerClass.Roller6();
+            int roll2 = RollerClass.Roller6();
+            Console.WriteLine("First die reads: " + roll1 + "!");
+            Console.WriteLine("Second die reads: " + roll2 + "!");
+            
 
-            if (myRandomNumber1 == 1 && myRandomNumber2 == 1) // if both are 1, display snake eyes
+            if (roll1 == 1 && roll2 == 1) // if both are 1, display snake eyes
             {
                 Console.WriteLine("Snake Eyes!");
             }
-            else if ((myRandomNumber1 == 1 && myRandomNumber2 == 2) || (myRandomNumber1 == 2 && myRandomNumber2 == 1)) //if one is 1 and the other is 2 display ace deuce
+            else if ((roll1 == 1 && roll2 == 2) || (roll1 == 2 && roll2 == 1)) //if one is 1 and the other is 2 display ace deuce
             {
                 Console.WriteLine("Ace Deuce!");
             }
-            else if (myRandomNumber1 == 6 && myRandomNumber2 == 6) // if both rolls are 6 display box cars
+            else if (roll1 == 6 && roll2 == 6) // if both rolls are 6 display box cars
             {
                 Console.WriteLine("Box Cars!");
 
             }
-            else if (myRandomNumber1 + myRandomNumber2 == 7 || myRandomNumber1 + myRandomNumber2 == 11) // if total value is either 7 or 11 display as a win
+            else if (roll1 + roll2 == 7 || roll1 + roll2 == 11) // if total value is either 7 or 11 display as a win
             {
                 Console.WriteLine("Win!");
             }
-            if (myRandomNumber1 + myRandomNumber2 == 2 || myRandomNumber1 + myRandomNumber2 == 3 || myRandomNumber1 + myRandomNumber2 == 12)  // if total value is 2, 3, or 12, display craps
+            if (roll1 + roll2 == 2 || roll1 + roll2 == 3 || roll1 + roll2 == 12)  // if total value is 2, 3, or 12, display craps
             {
                 Console.WriteLine("Craps!");
             }
 
-            int rollTotal = (myRandomNumber1 + myRandomNumber2); // add each die together to get a total
+            int rollTotal = (roll1 + roll2); // add each die together to get a total
 
             Console.WriteLine("If we add those up, the total comes to: " + rollTotal);//display total
-        } 
+        }
         else // if the user does not choos a 6 sided die specifically, run this block
         {
+
             Console.WriteLine("You chose to roll a " + sides + " sided die"); // display number of sides chosen to user
             Console.WriteLine("Press the enter key to give 'em a roll"); // enter to roll
             Console.ReadLine();
-            Random rand3 = new Random(); //initiate random number generation
-            int myRandomNumber1 = rand3.Next(1, (sides + 1)); //establish range of numbersand add 1 to include the highest value
-            Console.WriteLine("First die reads: " + myRandomNumber1 + "!"); //diplay first die value
 
-            Random rand4 = new Random();
-            int myRandomNumber2 = rand4.Next(1, (sides + 1));
-            Console.WriteLine("First die reads: " + myRandomNumber2 + "!"); //display second die value
-
-            int rollTotal = (myRandomNumber1 + myRandomNumber2); // add each die together to get a total
+            int roll3 = RollerClass.Roller(sides);
+            int roll4 = RollerClass.Roller(sides);
+            Console.WriteLine("First die reads: " + roll3 + "!"); //diplay first die value
+            Console.WriteLine("Second die reads: " + roll4 + "!");
+           
+            int rollTotal = (roll3 + roll4); // add each die together to get a total
 
             Console.WriteLine("If we add those up, the total comes to: " + rollTotal); //display total
         }
@@ -95,3 +98,5 @@ do
 
     }
 } while (true);
+
+
